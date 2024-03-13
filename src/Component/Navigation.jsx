@@ -8,6 +8,7 @@ function Navigation() {
         <NavLink to="/">HOME</NavLink>
         
         <NavLink to='Login'>LOG-IN</NavLink>
+        <NavLink to='SignUp'>SIGN-UP</NavLink>
     </div>
   )
 }

@@ -1,9 +1,16 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import SignUp from "./SingUp";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showSignUp, setShowSignUp] = useState(false);
+
+  const handleShowSignUp = () => {
+    setShowSignUp(!showSignUp);
+  };
+
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -21,7 +28,10 @@ const Login = () => {
   };
 
   return (
-    <div className="flex items-center justify-center h-screen bg-black">
+    <>   
+       { !showSignUp &&
+    
+     <div className="flex items-center justify-center h-screen bg-black">
       <form
         className="bg-white  shadow-md rounded px-8 pt-6 pb-8 mb-4 w-1/3"
         onSubmit={handleSubmit}
@@ -60,7 +70,7 @@ const Login = () => {
           />
         </div>
         <div className="flex items-center justify-between">
-          <button
+          <button onClick={!showSignUp}
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             type="submit"
           >
@@ -80,7 +90,7 @@ const Login = () => {
           >
             don't have an account?
           </p>
-          <button
+          <button  onClick={handleShowSignUp}
             className="bg-blue-500 hover:bg-blue-700 text-white  font-bold py-2 px-2 rounded focus:outline-none focus:shadow-outline"
             // type="submit"
             href="#"
@@ -89,7 +99,12 @@ const Login = () => {
           </button>
         </div>
       </form>
+
     </div>
+     }
+    { showSignUp &&   <SignUp />} 
+    </>
+
   );
 };
 

@@ -3,6 +3,7 @@ import { Routes,Route } from 'react-router-dom'
 import HomePage from './Component/HomePage'
 import Login from './Component/Login'
 import Navigation from './Component/Navigation'
+import SingUp from './Component/SingUp'
 const App = () => {
   return (
     <div>
@@ -10,6 +11,7 @@ const App = () => {
       <Routes>
     <Route path='/' element={<HomePage/>}/>
     <Route path='Login' element={<Login/>}/>
+    <Route path='SingUp' element={<SingUp/>}/>
   
 
       </Routes>
