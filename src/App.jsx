@@ -1,27 +1,53 @@
-import React from 'react'
-import { Routes,Route } from 'react-router-dom'
-import HomePage from './Component/HomePage'
-import Login from './Component/Login'
-import Navigation from './Component/Navigation'
-import SingUp from './Component/SingUp'
-import Fav from './Component/Fav'
+import React from 'react';
+import { useState } from 'react';
+import { Routes, Route } from 'react-router-dom';
+import HomePage from './Component/HomePage';
+import Login from './Component/Login';
+import Navigation from './Component/Navigation';
+import SingUp from './Component/SingUp';
+import Fav from './Component/Fav';
+
 const App = () => {
+  const [favorite, setFavorite] = useState([]);
+  const [favoriteTV,setFavoriteTV]= useState([])
+  const ItemClick = (RESULT) => {
+    if(!favorite.some((item)=>item.title === RESULT.title)){
+    const updateItem = [...favorite, RESULT];
+    setFavorite(updateItem);
+  };
+}
+const TVClick= (RESULT) => {
+  if(!favoriteTV.some((item)=>item.name === RESULT.name)){
+  const updateItem = [...favoriteTV, RESULT];
+  setFavoriteTV(updateItem);
+};
+}
+  const handleItemRemove = (titleToRemove) => {
+    const updatedFavorite = favorite.filter((item) => item.title !== titleToRemove);
+    setFavorite(updatedFavorite);
+  };
+const TVItemRemove=(nameToRemove)=>{
+  const updatedFavorite = favoriteTV.filter((item)=>
+  item.name !==nameToRemove)
+  setFavoriteTV(updatedFavorite)
+}
   return (
     <div>
-      <Navigation/>
+      <Navigation />
       <Routes>
-    <Route path='/' element={<HomePage/>}/>
-    <Route path='Login' element={<Login/>}/>
-    <Route path='SingUp' element={<SingUp/>}/>
-    <Route path='Fav' element={<Fav/>}/>
-  
-
+        <Route path='/' element={<HomePage ItemClick={ItemClick} TVClick={TVClick}/>} />
+        <Route path='Login' element={<Login />} />
+        <Route path='SingUp' element={<SingUp />} />
+        <Route path='Fav' element={<Fav favorite={favorite} 
+                                    handleItemRemove={handleItemRemove} 
+                                    favoriteTV={favoriteTV}  
+                                    TVItemRemove={TVItemRemove}/>} />
       </Routes>
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;
 
 
 

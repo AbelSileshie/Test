@@ -2,11 +2,11 @@ import React from 'react'
 import { useState } from 'react';
 import { useEffect } from 'react';
 
-const HomePage = () => {
+const HomePage = ({ItemClick,TVClick}) => {
     const [movieList, setMovieList] = useState([]);
     const [tv, setTv] = useState([]);
   
-    const [isLoading, setIsLoading] = useState(false);
+    
     const [search, setSearch] = useState('');
   
    
@@ -46,7 +46,7 @@ const HomePage = () => {
      {filteredStories.map((movie, index) => (
     <div  key={index} style={{display:"inline-block"}}>
       <img style={{ width: "300px", height: "250px" }} src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={`Movie ${index}`} />
-     
+      <button onClick={() => ItemClick(movie)}>love</button>
      
     </div>
     
@@ -56,7 +56,7 @@ const HomePage = () => {
       {filteredStoriesTV.map((show, index) => (
         <div key={index} style={{ display: "inline-block" }}>
           <img style={{ width: "300px", height: "250px" }} src={`https://image.tmdb.org/t/p/w500${show.poster_path}`} alt={`Movie ${index}`} />
-          
+          <button onClick={() => TVClick(show)}>love</button>
         </div>
       ))}
 
