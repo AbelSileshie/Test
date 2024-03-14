@@ -9,6 +9,7 @@ function Navigation() {
         
         <NavLink to='Login'>LOG-IN</NavLink>
         <NavLink to='SignUp'>SIGN-UP</NavLink>
+        <NavLink to='Fav'> Favorite </NavLink>
     </div>
   )
 }

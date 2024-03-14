@@ -4,6 +4,7 @@ import HomePage from './Component/HomePage'
 import Login from './Component/Login'
 import Navigation from './Component/Navigation'
 import SingUp from './Component/SingUp'
+import Fav from './Component/Fav'
 const App = () => {
   return (
     <div>
@@ -12,6 +13,7 @@ const App = () => {
     <Route path='/' element={<HomePage/>}/>
     <Route path='Login' element={<Login/>}/>
     <Route path='SingUp' element={<SingUp/>}/>
+    <Route path='Fav' element={<Fav/>}/>
   
 
       </Routes>
